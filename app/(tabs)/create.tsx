@@ -16,6 +16,9 @@ import { Ionicons } from "@expo/vector-icons";
 import COLORS from "@/constant/theme";
 import * as imagePicker from "expo-image-picker";
 import { Image } from "expo-image";
+import { useMutation } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import * as FileSystem from "expo-file-system";
 
 export default function create() {
   const [caption, setCaption] = useState("");
@@ -34,7 +37,36 @@ export default function create() {
     if (!result.canceled) setSelectedImage(result.assets[0].uri);
   };
 
-  const onSharePost = async () => {};
+  const generateUploadURL = useMutation(api.posts.generateUploadURL);
+  const createPost = useMutation(api.posts.createPost);
+
+  const onSharePost = async () => {
+    if (!selectedImage) return;
+    try {
+      setIsSharing(true);
+      const uploadUrl = await generateUploadURL();
+      const uploadResult = await FileSystem.uploadAsync(
+        uploadUrl,
+        selectedImage,
+        {
+          httpMethod: "POST",
+          uploadType: FileSystem.FileSystemUploadType.BINARY_CONTENT,
+          mimeType: "image/jpeg",
+        }
+      );
+      if (uploadResult.status !== 200) {
+        throw new Error("Failed to upload image");
+      }
+      const { storageId } = JSON.parse(uploadResult.body);
+      await createPost({ storageId, caption });
+
+      router.push("/(tabs)");
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsSharing(false);
+    }
+  };
 
   if (!selectedImage) {
     return (

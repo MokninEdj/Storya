@@ -49,6 +49,9 @@ export default function Login() {
           </View>
           <Text style={styles.googleButtonText}>Continue with Google</Text>
         </TouchableOpacity>
+        <Text style={styles.termsText}>
+          By signing in, you agree to our terms and privacy policy.
+        </Text>
       </View>
     </View>
   );

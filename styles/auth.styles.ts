@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
   },
   tagline: {
     fontSize: 16,
-    color: COLORS.textDark,
+    color: COLORS.placeholderText,
     letterSpacing: 1,
     textTransform: "lowercase",
   },
@@ -88,7 +88,7 @@ export const styles = StyleSheet.create({
   termsText: {
     textAlign: "center",
     fontSize: 12,
-    color: COLORS.black,
+    color: COLORS.placeholderText,
     maxWidth: 280,
   },
 });
