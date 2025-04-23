@@ -7,6 +7,7 @@ import { Ionicons } from "@expo/vector-icons";
 import COLORS from "@/constant/theme";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import CommentsModal from "./CommentsModal";
 type PostProps = {
   post: {
     _id: string;
@@ -27,6 +28,8 @@ type PostProps = {
 export default function Post({ post }: { post: any }) {
   const [isLiked, setIsLiked] = useState(post.isLiked);
   const [likesCount, setLikesCount] = useState(post.likes);
+  const [commentsCount, setCommentsCount] = useState(post.comments);
+  const [showModal, setShowModal] = useState(false);
   const toggleLiked = useMutation(api.posts.likePost);
 
   const handleLike = async () => {
@@ -82,7 +85,7 @@ export default function Post({ post }: { post: any }) {
               color={isLiked ? COLORS.primary : COLORS.white}
             />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => setShowModal(true)}>
             <Ionicons
               name="chatbubble-outline"
               size={22}
@@ -114,6 +117,13 @@ export default function Post({ post }: { post: any }) {
         </TouchableOpacity>
         <Text style={styles.timeAgo}>2 days ago</Text>
       </View>
+
+      <CommentsModal
+        postId={post._id}
+        visible={showModal}
+        onClose={() => setShowModal(false)}
+        onCommentAdd={() => setCommentsCount((prev: any) => prev + 1)}
+      />
     </View>
   );
 }

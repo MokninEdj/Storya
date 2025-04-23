@@ -133,7 +133,7 @@ export const styles = StyleSheet.create({
     marginBottom: 8,
   },
   modalContainer: {
-    backgroundColor: COLORS.background,
+    backgroundColor: COLORS.black,
     marginBottom: Platform.OS === "ios" ? 44 : 0,
     flex: 1,
     marginTop: Platform.OS === "ios" ? 44 : 0,
@@ -167,6 +167,7 @@ export const styles = StyleSheet.create({
     height: 32,
     borderRadius: 16,
     marginRight: 12,
+    backgroundColor: "red",
   },
   commentContent: {
     flex: 1,
@@ -193,7 +194,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 12,
     borderTopWidth: 0.5,
     borderTopColor: COLORS.border,
-    backgroundColor: COLORS.background,
+    backgroundColor: COLORS.black,
   },
   input: {
     flex: 1,
@@ -201,7 +202,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 16,
     marginRight: 12,
-    backgroundColor: COLORS.inputBackground,
+    backgroundColor: COLORS.placeholderText,
     borderRadius: 20,
     fontSize: 14,
   },
