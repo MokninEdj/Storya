@@ -79,6 +79,7 @@ export const styles = StyleSheet.create({
   bio: {
     fontSize: 14,
     color: COLORS.white,
+    paddingVertical: 5,
     lineHeight: 20,
   },
   actionButtons: {
@@ -88,7 +89,7 @@ export const styles = StyleSheet.create({
   },
   editButton: {
     flex: 1,
-    backgroundColor: COLORS.border,
+    backgroundColor: COLORS.textDark,
     padding: 8,
     borderRadius: 8,
     alignItems: "center",
@@ -99,7 +100,7 @@ export const styles = StyleSheet.create({
     fontSize: 14,
   },
   shareButton: {
-    backgroundColor: COLORS.border,
+    backgroundColor: COLORS.textDark,
     padding: 8,
     borderRadius: 8,
     aspectRatio: 1,
@@ -120,7 +121,7 @@ export const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
   modalContent: {
-    backgroundColor: COLORS.background,
+    backgroundColor: COLORS.black,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     padding: 20,
@@ -146,7 +147,7 @@ export const styles = StyleSheet.create({
     fontSize: 14,
   },
   input: {
-    backgroundColor: COLORS.border,
+    backgroundColor: COLORS.textDark,
     borderRadius: 8,
     padding: 12,
     color: COLORS.white,
@@ -174,7 +175,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
   postDetailContainer: {
-    backgroundColor: COLORS.background,
+    backgroundColor: COLORS.black,
     maxHeight: height * 0.9,
   },
   postDetailHeader: {

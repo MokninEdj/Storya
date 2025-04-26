@@ -97,7 +97,7 @@ export default function create() {
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
-      keyboardVerticalOffset={Platform.OS === "ios" ? 120 : 0}
+      keyboardVerticalOffset={Platform.OS === "ios" ? 120 : 50}
     >
       {/* Header */}
       <View style={styles.header}>
