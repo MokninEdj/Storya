@@ -198,7 +198,7 @@ export const styles = StyleSheet.create({
     marginTop: 16,
   },
   followingButton: {
-    backgroundColor: COLORS.border,
+    backgroundColor: COLORS.textDark,
     borderWidth: 1,
     borderColor: COLORS.primary,
   },

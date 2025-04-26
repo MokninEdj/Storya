@@ -73,7 +73,14 @@ export default function Post({ post }: { post: any }) {
   return (
     <View style={styles.post}>
       <View style={styles.postHeader}>
-        <Link href={"/(tabs)/notifications"}>
+        <Link
+          href={
+            currentUser?._id === post.author._id
+              ? "/(tabs)/profile"
+              : `/user/${post.author._id}`
+          }
+          asChild
+        >
           <TouchableOpacity style={styles.postHeaderLeft}>
             <Image
               source={{ uri: post.author.image }}
