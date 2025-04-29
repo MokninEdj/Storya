@@ -3,7 +3,7 @@ export const stories = [
     id: "1",
     username: "Liam Smith",
     avatar:
-      "https://images.unsplash.com/photo-1603415526960-f8f0a1f2b45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     hasStory: true,
   },
   {
@@ -31,21 +31,21 @@ export const stories = [
     id: "5",
     username: "James Davis",
     avatar:
-      "https://images.unsplash.com/photo-1614282612094-b6a3fda14e05?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=1972&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     hasStory: false,
   },
   {
     id: "6",
     username: "Ava Martinez",
     avatar:
-      "https://images.unsplash.com/photo-1611048265541-3e4d978c4a5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     hasStory: true,
   },
   {
     id: "7",
     username: "William Garcia",
     avatar:
-      "https://images.unsplash.com/photo-1589571894960-20bbe2828b13?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1587397845856-e6cf49176c70?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     hasStory: false,
   },
 ];

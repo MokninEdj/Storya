@@ -22,14 +22,8 @@ type Props = {
   postId: Id<"posts">;
   visible: boolean;
   onClose: () => void;
-  onCommentAdd: () => void;
 };
-export default function CommentsModal({
-  onClose,
-  onCommentAdd,
-  postId,
-  visible,
-}: Props) {
+export default function CommentsModal({ onClose, postId, visible }: Props) {
   const comments = useQuery(api.comments.getComments, { postId });
   const addComment = useMutation(api.comments.createPost);
   const [newComment, setNewComment] = useState("");
@@ -42,7 +36,6 @@ export default function CommentsModal({
         postId,
       });
       setNewComment("");
-      onCommentAdd();
     } catch (error) {
       console.log(error);
     }

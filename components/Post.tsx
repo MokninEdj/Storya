@@ -30,8 +30,7 @@ type PostProps = {
 export default function Post({ post }: { post: any }) {
   const [isLiked, setIsLiked] = useState(post.isLiked);
   const [isBookmarked, setIsBookmarked] = useState(post.isBookmarked);
-  const [likesCount, setLikesCount] = useState(post.likes);
-  const [commentsCount, setCommentsCount] = useState(post.comments);
+
   const [showModal, setShowModal] = useState(false);
   const toggleLiked = useMutation(api.posts.likePost);
   const toggleBookmarked = useMutation(api.bookmarks.addBookmark);
@@ -39,7 +38,6 @@ export default function Post({ post }: { post: any }) {
     try {
       const isLiked = await toggleLiked({ postId: post._id });
       setIsLiked(isLiked);
-      setLikesCount((prev: any) => (isLiked ? prev + 1 : prev - 1));
     } catch (error) {
       console.log(error);
     }
@@ -146,9 +144,7 @@ export default function Post({ post }: { post: any }) {
       {/* Post Info @*/}
       <View style={styles.postInfo}>
         <Text style={styles.likesText}>
-          {likesCount > 0
-            ? `${likesCount.toLocaleString()} likes`
-            : "Be the first to like this"}
+          {post.likes > 0 ? `${post.likes} likes` : "Be the first to like this"}
         </Text>
         {post.caption && (
           <View style={styles.captionContainer}>
@@ -157,10 +153,10 @@ export default function Post({ post }: { post: any }) {
           </View>
         )}
 
-        {commentsCount > 0 && (
+        {post.comments > 0 && (
           <TouchableOpacity onPress={() => setShowModal(true)}>
             <Text style={styles.commentText}>
-              View all {commentsCount} comments
+              View all {post.comments} comments
             </Text>
           </TouchableOpacity>
         )}
@@ -173,7 +169,6 @@ export default function Post({ post }: { post: any }) {
         postId={post._id}
         visible={showModal}
         onClose={() => setShowModal(false)}
-        onCommentAdd={() => setCommentsCount((prev: any) => prev + 1)}
       />
     </View>
   );

@@ -41,10 +41,7 @@ export const createPost = mutation({
 export const getFeeds = query({
   handler: async (ctx) => {
     const currentUser = await getAuthenticatedUser(ctx);
-    const posts = await ctx.db
-      .query("posts")
-      // .withIndex("by_userId", (q) => q.eq("userId", currentUser._id))
-      .collect();
+    const posts = await ctx.db.query("posts").collect();
     if (posts.length === 0) return [];
 
     // Enhance the post response
@@ -67,12 +64,12 @@ export const getFeeds = query({
         return {
           ...post,
           author: {
-            id: postAuthor?._id,
+            _id: postAuthor?._id,
             username: postAuthor?.username,
             image: postAuthor?.image,
           },
-          likes: !!like,
-          bookmarks: !!bookmark,
+          isLiked: !!like,
+          isBookmarked: !!bookmark,
         };
       })
     );

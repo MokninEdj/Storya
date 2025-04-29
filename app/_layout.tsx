@@ -3,8 +3,10 @@ import AuthProvider from "./(auth)/AuthProvider";
 import ClerkAndConvexProvider from "@/providers/ClerkAndConvex";
 import { useFonts } from "expo-font";
 import { SplashScreen } from "expo-router";
-import { useCallback } from "react";
-
+import { useCallback, useEffect } from "react";
+import * as NavigationBar from "expo-navigation-bar";
+import { Platform } from "react-native";
+import { StatusBar } from "expo-status-bar";
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
@@ -12,11 +14,20 @@ export default function RootLayout() {
     "JetBrainsMono-Medium": require("../assets/fonts/JetBrainsMono-Medium.ttf"),
   });
 
+  // hide splash screen after fonts are loaded
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
       await SplashScreen.hideAsync();
     }
   }, [fontsLoaded]);
+
+  // update native navigation bar in android
+  useEffect(() => {
+    if (Platform.OS === "android") {
+      NavigationBar.setBackgroundColorAsync("#000");
+      NavigationBar.setButtonStyleAsync("light");
+    }
+  }, []);
 
   return (
     <ClerkAndConvexProvider>
@@ -28,6 +39,7 @@ export default function RootLayout() {
           <AuthProvider />
         </SafeAreaView>
       </SafeAreaProvider>
+      <StatusBar style="light" />
     </ClerkAndConvexProvider>
   );
 }
